@@ -85,7 +85,7 @@ std::shared_ptr<ifx::RigidBody> CreateRigidBox(glm::vec3 scale){
     box_collision->collision_shape_bt()->setLocalScaling(btVector3(
             scale.x, scale.y, scale.z));
 
-    auto mass = 1.0f;
+    auto mass = 2.0f;
     auto rigid_body = std::shared_ptr<ifx::RigidBody>(
             new ifx::RigidBody(box_collision, mass));
 
@@ -101,7 +101,7 @@ std::shared_ptr<ifx::RigidBody> CreateFractureRigidBox(
     box_collision->collision_shape_bt()->setLocalScaling(btVector3(
             scale.x, scale.y, scale.z));
 
-    auto mass = 0.30f;
+    auto mass = 0.20f;
 
     auto rigid_body = std::shared_ptr<ifx::FractureRigidBody>(
             new ifx::FractureRigidBody(box_collision, mass, simulation));
@@ -175,25 +175,26 @@ std::vector<std::shared_ptr<ifx::GameObject>> CreateFractureBlock(
     const glm::vec3 scale = glm::vec3(scale_factor, scale_factor, scale_factor);
     float epsilon = 0.1;
     std::vector<std::shared_ptr<ifx::GameObject>> objects;
-    float start_y = (a * scale_factor) / 2.0f;
-    //float start_y = 5.0;
-/*
-    const int x = 5;
-    const int y = 20;
-    const int z = 5;
-*/
-/*
-    const int x = 4;
-    const int y = 12;
-    const int z = 4;
-*/
+
+
+
+
 
     const int x = 4;
     const int y = 12;
     const int z = 4;
-
     const float platform_height = 3;
     const float platform_width = 2;
+    float start_y = (a * scale_factor) / 2.0f;
+
+    /*
+    const int x = 10;
+    const int y = 1;
+    const int z = 1;
+    const float platform_height = 0;
+    const float platform_width = 0;
+    float start_y = 7.0;
+    */
 
     for(int i = 0; i < x+platform_width ; i++){
         for(int j = 0; j < platform_height; j++){
